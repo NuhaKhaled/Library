@@ -1,0 +1,39 @@
+<%unless @user.books.blank? %>
+
+
+<h2>Your BookShelf</h2> <%= link_to 'Add a New Book', new_user_book_path(current_user)  %>
+
+<br/><br/>
+
+<% @user.books.each do |book| %>
+
+<%if value == nil || value == book.state %>
+
+  <div class="book">
+    <div class ="bookimg"><%= image_tag book.photo.url(:small) , :class => "image" %></div> 
+    <div class="bookinfo">
+    <h3> Book's Name :    <%= book.title %> </h3>
+    <p>Description : <%=book.desc%></p>
+    <p>state : <%=book.state%>   ( <%= link_to 'change state', changeState_book_path(book) ,  :popup => ['changeState_book', 'height=300,width=600'] %> )</p> 
+ 
+    <%= link_to 'show', user_book_path(@user , book) %> | 
+
+    <%= link_to 'Edit', edit_user_book_path(@user, book) %> |
+
+    <%= link_to 'Destroy book', [book.user, book],
+                 :confirm => 'Are you sure?',
+                 :method => :delete %>
+  </div>
+
+ 
+
+</div>
+
+<% end %>
+<% end %>
+<%= link_to 'Add a New Book', new_user_book_path(current_user)  %>
+<%else%>
+You Have no Books . <br/>
+<%= link_to  'Add Your First Book' , new_user_book_path(current_user) %>
+<%end%>
+

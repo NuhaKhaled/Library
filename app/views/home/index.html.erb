@@ -1,0 +1,6 @@
+<%= image_tag("books.png", :alt => "rss feed" , :border => "0px" , :class =>"noBorder") %>
+<% if current_user %>  
+ <%= link_to 'Go to Your BookShelf', user_books_path(current_user) ,:class => 'button' %>
+  <% else %>  
+ <%= link_to 'Sign up today', new_user_path ,:class => 'button' %>
+<% end %> 

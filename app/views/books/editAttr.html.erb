@@ -1,0 +1,18 @@
+ <h2><%= @book.title %>  </h2>
+<%= form_for([current_user, @book]) do |f| %>
+<p>change state :</p>
+  <div class="field">
+    <%= f.radio_button :state, 'read', :checked => true %> 
+      <%= label :state_read, 'read' %>
+      <%= f.radio_button :state, 'reading' %>
+      <%= label :state_reading, 'reading' %>
+      <%= f.radio_button :state, 'to read' %>
+      <%= label :state_to_read, 'to_read' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <%end%>
+
+

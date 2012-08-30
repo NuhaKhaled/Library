@@ -1,0 +1,20 @@
+
+<%= form_for ([@user, @book]) do |f| %>
+  <div class="book">
+    <div class ="bookimg"><%= image_tag @book.photo.url(:small) , :class => "image" %></div> 
+    <div class="bookinfo">
+    <h3> Book's Name :    <%= @book.title %> </h3>
+    <p>Description : <%= @book.desc%></p>
+    <p>state : <%= @book.state%> ( <%= link_to 'change state', changeState_book_path(@book) ,  :popup => ['changeState_book', 'height=300,width=600'] %> ) </p>
+
+     <%= link_to 'Edit', edit_user_book_path(@user, @book) %> | 
+
+   <%= link_to 'Destroy book', [@book.user, @book],
+                 :confirm => 'Are you sure?',
+                 :method => :delete %>
+  </div>
+
+
+  <%end%>
+
+<!--this may give an error :) !-->
